@@ -1,0 +1,45 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template lwc:if={recordAvailable}>
+
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12 slds-align_absolute-center">
+        </div>
+        <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12" style="text-align: center;">
+          <div class="slds-text-heading_large slds-m-around_small slds-align_absolute-center">{tableHeader}</div>
+          <div class="slds-text-heading_medium slds-m-around_small slds-align_absolute-center">{tableSubHeader}</div>
+        </div>
+        <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_12-of-12 slds-align_absolute-center">
+        </div>
+      </div>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-max-medium-table_stacked">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <template lwc:if={allowSNo}>
+                  <th class="col-th" scope="col">
+                  </th>
+                </template>
+                <template for:each={datatableColumnConfig} for:item="columnConf">
+                  <th key={columnConf.columnNo} class="col-th" scope="col">
+                      <div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+                        <span class="slds-truncate" title={columnConf.label}>{columnConf.label}</span>
+                        <span class="slds-icon_container col-th-order-icon">
+                            <lightning-button-icon icon-name={columnConf.sortIconName} size="x-small" variant="container" 
+                                                    disabled={disableSort} alternative-text="Sort" data-column={columnConf.columnNo}
+                                                    data-sort-direction={columnConf.sortDirection} onclick={sortHandler}>
+                            </lightning-button-icon>
+                        </span>
+                      </div>
+                  </th>
+                </template>
+              </tr>
+            </thead>
+            <tbody class="table-tbody" lwc:dom="manual">
+              <!-- <tr> will be added dynamically -->
+            </tbody>
+            <!-- <tbody>
+              any additional tr can go here in extra tbody
+            </tbody> -->
+          </table>
+    </template>
+</template>

@@ -1,0 +1,7 @@
+.col-th .col-th-order-icon{
+	visibility: hidden;
+}
+
+.col-th:hover .col-th-order-icon{
+	visibility: visible;
+}
